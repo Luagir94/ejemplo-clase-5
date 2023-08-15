@@ -1,19 +1,22 @@
 import { Link } from 'react-router-dom'
 import Layout from '../../components/layout';
-import {useQuery} from '@tanstack/react-query';
-const Favs = () => {
-      const { data : FavsData } = useQuery(["favs"], () => getFavs())
-      const getFavs = async () => {
+import { useQuery } from '@tanstack/react-query';
+
+
+const getCapturados = async () => {
         const request = await fetch('https://611b233c22020a00175a4357.mockapi.io/ejemploclase');
-        const data = await request.json();
+        const  data = await request.json();
         return data;
-    }
+}
+
+const Favs = () => {
+  const {data : capturados} = useQuery(['capturados'], getCapturados)
 
 
   return (
     <div>
       
-  <Layout pokemons={FavsData}
+  <Layout pokemons={capturados || []}
   isFav
   />; 
     <div className='mt-32'>

@@ -20,9 +20,6 @@ dependencies:
   match-sorter:
     specifier: ^6.3.1
     version: 6.3.1
-  proptypes:
-    specifier: ^1.1.0
-    version: 1.1.0
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -70,6 +67,9 @@ devDependencies:
   postcss:
     specifier: ^8.4.27
     version: 8.4.27
+  prop-types:
+    specifier: ^15.8.1
+    version: 15.8.1
   tailwindcss:
     specifier: ^3.3.3
     version: 3.3.3
@@ -2187,10 +2187,6 @@ packages:
       object-assign: 4.1.1
       react-is: 16.13.1
     dev: true
-
-  /proptypes@1.1.0:
-    resolution: {integrity: sha512-589N0gHNvg6ocCDia1knxMwguEcZq1qyD8fVxFZEdZP0YKI+GTHyflsJH2mYE0YZbo1KNj5W8avdSR4iJDV+fw==}
-    dev: false
 
   /proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}

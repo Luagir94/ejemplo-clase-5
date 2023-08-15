@@ -1,9 +1,9 @@
 
 import { useContext } from "react";
-import { PokemonContext } from "../../context";
-const Card = ({id_poke, name ,isFav}) => {
-  const { addFav, isLoadingAddFav } = useContext(PokemonContext);
+import {Context} from "../../context";
 
+const Card = ({id_poke, name ,isFav}) => {
+const {capturar, loadingCapturar} = useContext(Context)
 
 
 
@@ -25,8 +25,8 @@ const Card = ({id_poke, name ,isFav}) => {
            #${id_poke}`}
         </h2>
        {isFav ?  null :
-       isLoadingAddFav ? <p>Capturando Pokemon...</p> :
-        <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700" onClick={() => addFav({name, id_poke})}>Atrapar</button>}
+       loadingCapturar ? <p>Capturando Pokemon...</p> :
+        <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700" onClick={() => capturar({name, id_poke})}>Atrapar</button>}
       </div>
     </div>
   );

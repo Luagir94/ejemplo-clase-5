@@ -1,41 +1,35 @@
-import { useQuery } from "@tanstack/react-query";
-import {useState} from "react";
-import Layout from "./components/layout";
-import {initData} from '../data';
-
-
-   const getPokemons = async (page) => {
-        const request = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${page}}`);
-        const data = await request.json();
-        const { results } = data;
-     
-        return results
-    };
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import Home from './pages/home';
+import Favs from './pages/favs';
+import { QueryClient , QueryClientProvider } from '@tanstack/react-query';
+import { ContextProvider } from './context'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 function App() {
-  const [page, setPage] = useState(0)
-  const { data } = useQuery(["pokemons", page], () => getPokemons(page),{
-    initialData: initData,
-  })
+
+    const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home/>,
+  },
+  {
+    path: "/favs",
+    element: <Favs/>,
+  },
+]);
 
 
- 
+const client = new QueryClient();
 
-
-  const handlePagination = (page) => {
-    if(page < 0) return;
-    setPage(page)
-  }
-
-
-
-
- 
-
-  return <Layout pokemons={data}
-  handlePagination={handlePagination}
-  page={page}
-  />;
+return( 
+<QueryClientProvider client={client}>
+  <ContextProvider
+>
+  <ReactQueryDevtools initialIsOpen={false} />
+<RouterProvider router={router} />
+</ContextProvider>
+  </QueryClientProvider>
+)
 }
 
 export default App;
